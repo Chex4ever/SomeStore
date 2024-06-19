@@ -1,16 +1,24 @@
 package pro.sky.exever.store;
 
-import java.util.Collection;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class OrderServiceImpl implements OrderService{
+    private final Cart cart;
 
-    @Override
-    public void add(Collection<Integer> ids) {
-
+    public OrderServiceImpl(Cart cart) {
+        this.cart = cart;
     }
 
     @Override
-    public int[] get() {
-        return new int[0];
+    public void add(List<Integer> ids) {
+        cart.add(ids);
+    }
+
+    @Override
+    public List<Integer> get() {
+        return cart.get();
     }
 }
